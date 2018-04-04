@@ -102,9 +102,34 @@ def infixToPostfix(infixexpr):
         postfixList.append(opStack.pop())
     return " ".join(postfixList)
 
+
+# 后缀表达式求值
+def postfixEval(postfixExpr):
+    operandStack = Stack()
+    tokenList = postfixExpr.split(' ')
+
+    for token in tokenList:
+        if token in "0123456789":
+            # 如果是数字则压栈
+            operandStack.push(int(token))
+        else:
+            #遇到运算符出栈两次
+            temp2 = operandStack.pop()
+            temp1 = operandStack.pop()
+            if token == "*":
+                result = temp1*temp2
+            elif token == "/":
+                result = temp1/temp2
+            elif token == "+":
+                result = temp1+temp2
+            elif token == "-":
+                result = temp1-temp2
+            operandStack.push(result)
+    return operandStack.pop()
+
 if __name__ == '__main__':
     # print(divideBy2(233))
     # print(baseConverter(25,16))
 
-    print(infixToPostfix("A + B * C - ( A "))
-
+    # print(infixToPostfix("A + B * C - ( A "))
+    print(postfixEval('7 8 + 3 2 + /'))
