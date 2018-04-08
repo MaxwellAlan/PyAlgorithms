@@ -1,0 +1,32 @@
+from DataStructure.PyList import UnorderedList
+
+if __name__ == '__main__':
+    uList = UnorderedList()
+
+    uList.add(10)
+    uList.add(11)
+    uList.add(13)
+    uList.add(14)
+    uList.add(15)
+    uList.add(16)
+    uList.add(17)
+    uList.add(18)
+    uList.add("a")
+    uList.add("b")
+
+    print(uList)
+    print(uList.isEmpty())
+    print(uList.size())
+    uList.remove(15)
+    print(uList)
+    print(uList.index(11))
+    print(uList.search('a'))
+    print(uList.search(15))
+    uList.append(15)
+    print(uList)
+    uList.insert(0,"c")
+    print(uList)
+    uList.pop()
+    print(uList)
+    uList.pop(1)
+    print(uList)

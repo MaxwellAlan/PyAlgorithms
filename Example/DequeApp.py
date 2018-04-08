@@ -19,3 +19,4 @@ if __name__ == '__main__':
     print(palchecker("abcdedcba"))
     print(palchecker("lsdkjfskf"))
     print(palchecker("radar"))
+
