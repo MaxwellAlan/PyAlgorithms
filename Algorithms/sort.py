@@ -31,6 +31,23 @@ def insertSort(alist):
             if alist[position] > alist[position+1]:
                 alist[position],alist[position+1] = alist[position+1],alist[position]
 
+def shellSort(alist):
+    sublistcount = len(alist) // 2
+    while sublistcount > 0:
+        for startposition in range(sublistcount):
+            gapInsertSort(alist,startposition,sublistcount)
+        sublistcount = sublistcount // 2
+
+def gapInsertSort(alist,start,gap):
+    for i in range(start+gap,len(alist),gap):
+        currentvalue = alist[i]
+        position = i
+        while position >= gap and alist[position-gap] > currentvalue:
+            alist[position] = alist[position-gap]
+            position = position-gap
+        alist[position] = currentvalue
+
+
 def bubbleSortTest():
     alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
     bubbleSort(alist)
@@ -51,8 +68,14 @@ def insertSortTest():
     insertSort(alist)
     print(alist)
 
+def shellSortTest():
+    alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+    shellSort(alist)
+    print(alist)
+
 if __name__ == '__main__':
-    bubbleSortTest()
-    shortBubbleSortTest()
-    selectSortTest()
-    insertSortTest()
+    # bubbleSortTest()
+    # shortBubbleSortTest()
+    # selectSortTest()
+    # insertSortTest()
+    shellSortTest()
