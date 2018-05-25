@@ -31,4 +31,20 @@ class Solution:
         :type prices: List[int]
         :rtype: int
         """
-        
+        profit = 0
+        for i in range(len(prices)-1,0,-1):
+            if prices[i] > prices[i-1]:
+                profit = profit + (prices[i] - prices[i-1])
+        return profit
+
+if __name__ == '__main__':
+    s = Solution()
+    prices = [1,2,3,4,5]
+    print(s.maxProfit(prices))
+
+
+
+
+
+
+
