@@ -8,7 +8,7 @@
 输出: 4
 解释: 小于 10 的质数一共有 4 个, 它们是 2, 3, 5, 7 。
 '''
-
+import math
 
 class Solution:
     def countPrimes(self, n):
@@ -16,19 +16,22 @@ class Solution:
         :type n: int
         :rtype: int
         """
-        count = 2
         if n < 2:
             return 0
-        elif n == 2:
-            return 1
-        else:
-            for i in range(2,n):
-                for j in range(2,i):
-                    if i % j == 0:
-                        count += 1
-                        break
-        return n-count
+        num = [True]*(n-1)
+        num[0] = False
+        limit = int(math.sqrt(n))
+        res = 0
+        for i in range(2,limit+1,1):
+            if num[i-1]:
+                for j in range(i*i,n,i):
+                    num[j-1] = False
+
+        for j in range(0,n-1,1):
+            if num[j] :
+                res+=1
+        return res
 
 if __name__ == '__main__':
     s = Solution()
-    print(s.countPrimes(5))
+    print(s.countPrimes(11))
